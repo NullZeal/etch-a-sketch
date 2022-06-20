@@ -12,6 +12,7 @@ document.body.onmouseup = function() {
 drawBoard(rowN, cellN);
 
 const button = document.querySelector('#button');
+
 button.addEventListener('click', ()=>{
     let rowAmount = -1;
     while (isNaN(rowAmount) || rowAmount<1 || rowAmount>100){
@@ -71,9 +72,13 @@ function addNewCol(row){
 
     newCol.addEventListener('mouseenter', () => {
         if(mouseDown==1){
-            newCol.style.backgroundColor = 'red';
+            newCol.style.backgroundColor = 'aliceblue';
         }
             
+    })
+
+    newCol.addEventListener('mousedown', ()=>{
+        newCol.style.backgroundColor = 'aliceblue'
     })
     row.appendChild(newCol);
 }
