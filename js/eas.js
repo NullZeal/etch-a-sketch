@@ -12,21 +12,18 @@ document.body.onmouseup = function() {
 drawBoard(rowN, cellN);
 
 const button = document.querySelector('#button');
-
 button.addEventListener('click', ()=>{
-
-    let rowAmount = 0;
+    let rowAmount = -1;
     while (isNaN(rowAmount) || rowAmount<1 || rowAmount>100){
         rowAmount = prompt('Amount of rows? (max 100)');
         Math.round(rowAmount) 
     }
         
-    let columnAmount = 0;
+    let columnAmount = -1;
     while(isNaN(columnAmount) || columnAmount<1 || columnAmount>100){
         columnAmount = prompt('Amount of cells per row? (max 100)');
         Math.round(rowAmount) 
     }
-
 
     rowN = rowAmount;
     cellN = columnAmount;
