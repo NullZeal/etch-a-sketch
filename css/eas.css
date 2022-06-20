@@ -1,16 +1,43 @@
 .grid{
-    display:inline-flexbox;
+    display:flex;
+    position: relative;
+    flex-wrap: wrap;
+    max-width: 240px;
+    left:50%;
 }
 
 .gridRow{
+    position: relative;
     display: flex;
     flex-direction: row;
+    transform: translate(-50%);
 }
 
 .gridCell{
-    width : 50px;
-    height : 50px;
-    background-color : blue;
-    margin : 2px;
+    width : 15px;
+    height : 15px;
+    background-color : rgb(13, 13, 13);
 }
 
+.gridCell:hover{
+    background-color: aqua;
+}
+
+#button{
+    position: relative;
+    left:50%;
+    width: 200px;
+    text-align: center;
+    transform: translate(-50%);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(145, 126, 162);
+    transition: all 0.75s ease;
+    color: aliceblue;
+    border-radius: 15px;
+    
+}
+
+#button:hover{
+    background-color: rgb(103, 88, 117);
+}
