@@ -1,9 +1,27 @@
-.grid{
+
+#grid{
+    display: grid;
+    background-color: #2196F3;
+    padding: 10px;
+    min-width:256px;
+    max-width: 256px;
+    min-height:256px;
+    max-height: 256px;
+}
+
+
+.gridCell{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+
+/* .grid{
     display:flex;
     position: relative;
-    flex-wrap: wrap;
-    max-width: 240px;
-    left:50%;
+    min-width: 1000x;
+    min-height: 1000px;
 }
 
 .gridRow{
@@ -13,9 +31,13 @@
     transform: translate(-50%);
 }
 
+.gridRow .gridCell{ 
+    flex:10%;
+
+
+}
+
 .gridCell{
-    width : 15px;
-    height : 15px;
     background-color : rgb(13, 13, 13);
 }
 
@@ -40,4 +62,4 @@
 
 #button:hover{
     background-color: rgb(103, 88, 117);
-}
+} */

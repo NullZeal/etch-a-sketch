@@ -1,5 +1,6 @@
-var rowN = 16;
-var cellN = 16;
+var cellN = 10
+var cellSize = 1;
+
 var mouseDown = 0;
 
 document.body.onmousedown = function() { 
@@ -9,77 +10,75 @@ document.body.onmouseup = function() {
     mouseDown = 0;
 }
 
-drawBoard(rowN, cellN);
+drawGrid(cellN);
 
 const button = document.querySelector('#button');
 
 button.addEventListener('click', ()=>{
-    let rowAmount = -1;
-    while (isNaN(rowAmount) || rowAmount<1 || rowAmount>100){
-        rowAmount = prompt('Amount of rows? (max 100)');
-        Math.round(rowAmount) 
+    let cellAmount = -1;
+    while (isNaN(cellAmount) || cellAmount<1 || cellAmount>100){
+        cellAmount = prompt('X by X ? (max 100)');
+        Math.round(cellAmount);
     }
-        
-    let columnAmount = -1;
-    while(isNaN(columnAmount) || columnAmount<1 || columnAmount>100){
-        columnAmount = prompt('Amount of cells per row? (max 100)');
-        Math.round(rowAmount) 
-    }
-
-    rowN = rowAmount;
-    cellN = columnAmount;
-    eraseBoard();
-    drawBoard(rowN, cellN);
+    cellN = cellAmount;
+    const grid = document.getElementById("grid");
+    grid.style.gridTemplateRows = null;
+    grid.style.gridTemplateColumns = null;
+    drawGrid(cellN);
 })
 
-function drawBoard(rowN, cellN){
-    for(let i = 0; i<rowN; i++){
-        addNewRow();
+function drawGrid(cellN){
+    const addRow = document.getElementById("grid");
+
+    for(let i = 0; i<cellN; i++){
+        addRow.style.gridTemplateRows += ` ${1}fr`;
+        addRow.style.gridTemplateColumns += ` ${1}fr`;
+        
     }
-    addColsToRows(cellN);
+    for(let i = 0; i<(cellN*cellN); i++){
+        addNewCell();
+    }
 }
 
-function eraseBoard(){
+function eraseGrid(){
     let grid = document.getElementById('grid')
     while (grid.firstChild) {
       grid.removeChild(grid.lastChild);
     }
-    let newWidth = cellN * 15;
-    grid.style.width = `${newWidth}px`;
 }
 
-function addNewRow(){
+function addNewCell(){
+    const grid = document.querySelector("#grid");
+    const newCell = document.createElement('div');
+    newCell.setAttribute('class', 'gridCell');
 
-    const grid = document.querySelector(".grid");
-
-    const newRow = document.createElement('div');
-    newRow.setAttribute('class', 'gridRow');
-    grid.appendChild(newRow);
-}
-
-function addColsToRows(cellN){
-    const rowList = document.getElementsByClassName('gridRow');
-    for(let row of rowList){
-        for(i=0;i<cellN;i++){
-            addNewCol(row);
+    newCell.addEventListener('mouseenter', () => {
+        if(mouseDown==1){
+            newCell.style.backgroundColor = 'red';
         }
-    }
+    })
+    newCell.addEventListener('mousedown', ()=>{
+        newCell.style.backgroundColor = 'red'
+    })
+    grid.appendChild(newCell);
 }
 
 function addNewCol(row){
     const newCol = document.createElement('div');
-    newCol.setAttribute('class', 'gridCell');
 
-    newCol.addEventListener('mouseenter', () => {
+    newCell.setAttribute('class', 'gridCell');
+
+    newCell.addEventListener('mouseenter', () => {
         if(mouseDown==1){
-            newCol.style.backgroundColor = 'aliceblue';
+            newCell.style.backgroundColor = 'red';
         }
             
     })
 
-    newCol.addEventListener('mousedown', ()=>{
-        newCol.style.backgroundColor = 'aliceblue'
+    newCell.addEventListener('mousedown', ()=>{
+        newCell.style.backgroundColor = 'red'
     })
-    row.appendChild(newCol);
+
+
 }
 
