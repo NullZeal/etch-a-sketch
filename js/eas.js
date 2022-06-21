@@ -1,5 +1,4 @@
-var cellN = 10
-var cellSize = 1;
+var cellN = 3
 
 var mouseDown = 0;
 
@@ -22,14 +21,11 @@ const button = document.querySelector('#inputButton');
 button.addEventListener('click', ()=>{
     let cellAmount = -1;
     while (isNaN(cellAmount) || cellAmount<1 || cellAmount>100){
-        cellAmount = prompt('X by X ? (max 100)');
+        cellAmount = prompt('Please set the Grid size : X by X ? (max 100)');
         Math.round(cellAmount);
     }
     cellN = cellAmount;
-    const grid = document.getElementById("grid");
-
     eraseGrid();
-    drawGrid(cellN);
 })
 
 function drawGrid(cellN){
@@ -49,7 +45,6 @@ function eraseGrid(){
     grid.style.gridTemplateRows = null;
     grid.style.gridTemplateColumns = null;
 
-    const allGridCells = document.getElementsByClassName("gridcell");
     while (grid.firstChild) {
         grid.removeChild(grid.lastChild);
     };
@@ -71,4 +66,3 @@ function addNewCell(){
     })
     grid.appendChild(newCell);
 }
-

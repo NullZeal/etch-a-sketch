@@ -4,10 +4,14 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+p{
+    color: aliceblue;
+    text-align: center;
+}
+
 #grid-container{
     position: relative;
     left:50%;
-
 }
 
 #grid{
@@ -19,12 +23,12 @@ body{
     min-height:500px;
     max-height: 500px;
     transform: translate(-50%);
-
 }
 
 
 .gridCell{
     background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(48, 48, 48, 0.383);
 }
 
 .button{
@@ -40,7 +44,6 @@ body{
     color: aliceblue;
     border-radius: 15px;
     display: block;
-    
 }
 
 .button:hover{
