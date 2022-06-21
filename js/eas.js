@@ -12,7 +12,12 @@ document.body.onmouseup = function() {
 
 drawGrid(cellN);
 
-const button = document.querySelector('#button');
+const eraseButton = document.getElementById("eraseButton");
+eraseButton.addEventListener('click', ()=>{
+    eraseGrid();
+});
+
+const button = document.querySelector('#inputButton');
 
 button.addEventListener('click', ()=>{
     let cellAmount = -1;
@@ -22,8 +27,8 @@ button.addEventListener('click', ()=>{
     }
     cellN = cellAmount;
     const grid = document.getElementById("grid");
-    grid.style.gridTemplateRows = null;
-    grid.style.gridTemplateColumns = null;
+
+    eraseGrid();
     drawGrid(cellN);
 })
 
@@ -33,7 +38,6 @@ function drawGrid(cellN){
     for(let i = 0; i<cellN; i++){
         addRow.style.gridTemplateRows += ` ${1}fr`;
         addRow.style.gridTemplateColumns += ` ${1}fr`;
-        
     }
     for(let i = 0; i<(cellN*cellN); i++){
         addNewCell();
@@ -41,10 +45,15 @@ function drawGrid(cellN){
 }
 
 function eraseGrid(){
-    let grid = document.getElementById('grid')
+    let grid = document.getElementById('grid');
+    grid.style.gridTemplateRows = null;
+    grid.style.gridTemplateColumns = null;
+
+    const allGridCells = document.getElementsByClassName("gridcell");
     while (grid.firstChild) {
-      grid.removeChild(grid.lastChild);
-    }
+        grid.removeChild(grid.lastChild);
+    };
+    drawGrid(cellN);
 }
 
 function addNewCell(){
@@ -54,31 +63,12 @@ function addNewCell(){
 
     newCell.addEventListener('mouseenter', () => {
         if(mouseDown==1){
-            newCell.style.backgroundColor = 'red';
+            newCell.style.backgroundColor = 'coral';
         }
     })
     newCell.addEventListener('mousedown', ()=>{
-        newCell.style.backgroundColor = 'red'
+        newCell.style.backgroundColor = 'coral'
     })
     grid.appendChild(newCell);
-}
-
-function addNewCol(row){
-    const newCol = document.createElement('div');
-
-    newCell.setAttribute('class', 'gridCell');
-
-    newCell.addEventListener('mouseenter', () => {
-        if(mouseDown==1){
-            newCell.style.backgroundColor = 'red';
-        }
-            
-    })
-
-    newCell.addEventListener('mousedown', ()=>{
-        newCell.style.backgroundColor = 'red'
-    })
-
-
 }
 

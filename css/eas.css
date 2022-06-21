@@ -1,12 +1,25 @@
+body{
+    background-color: rgb(20,23,22);
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#grid-container{
+    position: relative;
+    left:50%;
+
+}
 
 #grid{
     display: grid;
     background-color: #2196F3;
     padding: 10px;
-    min-width:256px;
-    max-width: 256px;
-    min-height:256px;
-    max-height: 256px;
+    min-width:500px;
+    max-width: 500px;
+    min-height:500px;
+    max-height: 500px;
+    transform: translate(-50%);
+
 }
 
 
@@ -14,38 +27,7 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-
-
-/* .grid{
-    display:flex;
-    position: relative;
-    min-width: 1000x;
-    min-height: 1000px;
-}
-
-.gridRow{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    transform: translate(-50%);
-}
-
-.gridRow .gridCell{ 
-    flex:10%;
-
-
-}
-
-.gridCell{
-    background-color : rgb(13, 13, 13);
-}
-
-.gridCell:hover{
-    background-color: aqua;
-}
-
-#button{
+.button{
     position: relative;
     left:50%;
     width: 200px;
@@ -57,9 +39,14 @@
     transition: all 0.75s ease;
     color: aliceblue;
     border-radius: 15px;
+    display: block;
     
 }
 
-#button:hover{
+.button:hover{
     background-color: rgb(103, 88, 117);
-} */
+}
+
+#eraseButton{
+    background-color: brown;
+}
