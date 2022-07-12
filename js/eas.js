@@ -20,11 +20,18 @@ const button = document.querySelector('#inputButton');
 
 button.addEventListener('click', ()=>{
     let cellAmount = -1;
+    let keepCellN = false;
     while (isNaN(cellAmount) || cellAmount<1 || cellAmount>100){
         cellAmount = prompt('Please set the Grid size : X by X ? (max 100)');
+        if(cellAmount == null) {
+            keepCellN = true;
+            break;
+        }
         Math.round(cellAmount);
     }
-    cellN = cellAmount;
+    if(!keepCellN){
+        cellN = cellAmount;
+    }
     eraseGrid();
 })
 
