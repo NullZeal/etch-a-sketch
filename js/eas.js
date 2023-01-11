@@ -1,5 +1,5 @@
-var cellN = 3
-
+var cellN = 3;
+const MAX_CELL_AMOUNT = 25;
 var mouseDown = 0;
 
 document.body.onmousedown = function() { 
@@ -21,8 +21,8 @@ const button = document.querySelector('#inputButton');
 button.addEventListener('click', ()=>{
     let cellAmount = -1;
     let keepCellN = false;
-    while (isNaN(cellAmount) || cellAmount<1 || cellAmount>100){
-        cellAmount = prompt('Please set the Grid size : X by X ? (max 100)');
+    while (isNaN(cellAmount) || cellAmount<1 || cellAmount>MAX_CELL_AMOUNT){
+        cellAmount = prompt(`Please set the Grid size : X by X (max ${MAX_CELL_AMOUNT})`);
         if(cellAmount == null) {
             keepCellN = true;
             break;
